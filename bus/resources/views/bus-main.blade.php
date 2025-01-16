@@ -297,6 +297,21 @@
                     </ul>
                 </div>
                 <span class="line-decor"></span>
+            </section>
+            <!-- слайдер -->
+            <section class="container second-section">
+                <h2 class="title">Поюбуйтесь на наши автобусы!</h2>
+                <div class="slider">
+                    <div class="slide" onclick="slider(0)">
+                        <img src="/img/bus1.jpg" alt="автобусик">
+                    </div>
+                    <div class="slide" onclick="slider(1)">
+                        <img src="/img/bus2.jpg" alt="автобусик 2">
+                    </div>
+                    <div class="slide" onclick="slider(2)">
+                        <img src="/img/bus3.jpg" alt="автобусик 3">
+                    </div>
+                </div>
                 <h2 class="title-list last">Планируйте поездки с комфортом и уверенностью!</h2>
             </section>
             <!-- футер -->

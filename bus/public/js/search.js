@@ -6,6 +6,8 @@ const searchButton = document.querySelector('.search-button');
 const quickSearch = document.querySelector('.quick-searcher');
 const defaultSearch = document.querySelector('.search-default');
 
+const slides = document.querySelectorAll('.slide');
+
 
 searchPointer.addEventListener('click', () => {
     if(quickSearch.style.opacity === '1'){
@@ -29,3 +31,14 @@ document.querySelector('.quick-search').addEventListener('click', () => {
     const arrow = document.querySelector('.arrow-search');
     arrow.classList.toggle('rotated');  
 });
+
+
+// слайдер
+
+const slider = (index) => {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+};
+
+
