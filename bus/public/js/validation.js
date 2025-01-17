@@ -42,6 +42,12 @@ class FormsValidation {
         })
 
         this.manageErrors(fieldControlElement, errorMessages)
+
+        const isValid = errorMessages.length === 0
+
+        fieldControlElement.ariaInvalid = !isValid
+
+        return isValid
     }
 
     onBlur(event){
@@ -61,12 +67,14 @@ class FormsValidation {
         }
     
         const requiredControlElements = [...event.target.elements].filter(({ required }) => required)
+        console.log('re', requiredControlElements);
         let isFormValid = true
         let firstInvalidFieldControl = null
     
         requiredControlElements.forEach((element) => {
+
             const isFieldValid = this.validateField(element)
-    
+            
             if (!isFieldValid) {
                 isFormValid = false
     

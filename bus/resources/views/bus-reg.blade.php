@@ -46,7 +46,7 @@
                 <label class="authorization__input-box">
                     <span>Пароль</span>
                     <div class="authorization__input">
-                        <input type="password" data-js-password required minlength="6" maxlength="16"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}" title="Пароль должен быть длиной от 8 до 16 символов, включать как минимум одну цифру, одну букву в нижнем и одну букву в верхнем регистре">
+                        <input type="password" name="password" data-js-password required minlength="6" maxlength="16"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}" title="Пароль должен быть длиной от 8 до 16 символов, включать как минимум одну цифру, одну букву в нижнем и одну букву в верхнем регистре">
                         <div class="eye slash">
                             <div></div>
                             <div></div>
@@ -57,7 +57,7 @@
                 <label class="authorization__input-box">
                     <span>Повторите Пароль</span>
                     <div class="authorization__input">
-                        <input type="password" data-js-password required minlength="6" maxlength="16"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}" title="Пароль должен быть длиной от 8 до 16 символов, включать как минимум одну цифру, одну букву в нижнем и одну букву в верхнем регистре">
+                        <input type="password" name="password_confirmation" data-js-password required minlength="6" maxlength="16"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}" title="Пароль должен быть длиной от 8 до 16 символов, включать как минимум одну цифру, одну букву в нижнем и одну букву в верхнем регистре">
                         <div class="eye slash">
                             <div></div>
                             <div></div>
