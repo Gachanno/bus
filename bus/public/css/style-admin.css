@@ -1,0 +1,517 @@
+@charset "UTF-8";
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/**
+   Убираем внутренние отступы слева тегам списков,
+   у которых есть атрибут class
+  */
+:where(ul, ol):where([class]) {
+    padding-left: 0;
+}
+
+/**
+   Убираем внешние отступы body и двум другим тегам,
+   у которых есть атрибут class
+  */
+body,
+:where(blockquote, figure):where([class]) {
+    margin: 0;
+}
+
+/**
+   Убираем внешние отступы вертикали нужным тегам,
+   у которых есть атрибут class
+  */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+    margin-block: 0;
+}
+
+:where(dd[class]) {
+    margin-left: 0;
+}
+
+:where(fieldset[class]) {
+    margin-left: 0;
+    padding: 0;
+    border: none;
+}
+
+/**
+   Убираем стандартный маркер маркированному списку,
+   у которого есть атрибут class
+  */
+:where(ul[class]) {
+    list-style: none;
+}
+
+/**
+   Обнуляем вертикальные внешние отступы параграфа,
+   объявляем локальную переменную для внешнего отступа вниз,
+   чтобы избежать взаимодействие с более сложным селектором
+  */
+p {
+    --paragraphMarginBottom: 24px;
+    margin-block: 0;
+}
+
+/**
+   Внешний отступ вниз для параграфа без атрибута class,
+   который расположен не последним среди своих соседних элементов
+  */
+p:where(:not([class]):not(:last-child)) {
+    margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+   Упрощаем работу с изображениями
+  */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/**
+   Наследуем свойства шрифт для полей ввода
+  */
+input,
+textarea,
+select,
+button {
+    font: inherit;
+}
+
+html {
+    /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+    height: 100%;
+    /**
+     Плавный скролл
+    */
+    scroll-behavior: smooth;
+}
+
+body {
+    /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+    overflow-x: hidden;
+    min-height: 100%;
+    /**
+     Унифицированный интерлиньяж
+    */
+    line-height: 1.5;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+  */
+svg *[fill] {
+    fill: currentColor;
+}
+
+svg *[stroke] {
+    stroke: currentColor;
+}
+
+/**
+   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+  */
+svg * {
+    transition-property: fill, stroke;
+}
+
+/**
+   Удаляем все анимации и переходы для людей,
+   которые предпочитают их не использовать
+  */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+@media (max-width: 767px) {
+    .hidden-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .visible-mobbile {
+        display: none !important;
+    }
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 21px;
+    color: #000;
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+    transition-duration: var(--transition-duraction);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    width: 287px;
+    padding: 8px 21px;
+    background: rgba(0, 119, 255, 0.15);
+}
+
+.nav {
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+.nav__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-top: 20px;
+    text-transform: none;
+}
+.nav__item {
+    display: flex;
+    align-items: center;
+    -moz-column-gap: 10px;
+    column-gap: 10px;
+    padding: 5px 6px;
+    cursor: pointer;
+}
+.nav__item img {
+    width: 15px;
+    height: 15px;
+}
+
+.main {
+    flex-grow: 2;
+}
+.main__list {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    -moz-column-gap: 15px;
+    column-gap: 15px;
+    width: 100%;
+    height: 53px;
+    padding-inline: 78px;
+    box-shadow: 0 0 137px 0 rgba(0, 0, 0, 0.14);
+    background: #fff;
+}
+.main__nav-wrapper {
+    display: flex;
+    align-items: center;
+    -moz-column-gap: 5px;
+    column-gap: 5px;
+}
+.main__avatar {
+    width: 19px;
+    height: 19px;
+}
+.main__bus-text {
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+.main__avatar-text {
+    font-weight: 400;
+    font-size: 14px;
+    color: #494949;
+}
+.main__tittle-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 21px 78px;
+    margin-block: 19px 45px;
+}
+.main__tittle {
+    font-size: 22px;
+    color: #494949;
+}
+.main__way-wrapper {
+    display: flex;
+}
+.main__way {
+    font-weight: 400;
+    font-size: 15px;
+    color: #494949;
+}
+.main__way:last-child {
+    color: #9b9b9b;
+}
+
+.table {
+    box-sizing: content-box;
+    border-spacing: 0;
+    border-color: transparent;
+    font-family: "Montserrat", sans-serif;
+}
+.table th {
+    padding-block: 15px 12px;
+}
+.table th:first-child {
+    padding-inline: 50px;
+}
+.table td {
+    padding-block: 21px 18px;
+}
+.table__head {
+    font-weight: 600;
+    font-size: 17px;
+    color: #fefefe;
+    background: #2a3042;
+}
+.table__text {
+    font-weight: 500;
+    font-size: 17px;
+    text-align: center;
+    color: #575757;
+}
+.table__actions {
+    display: flex;
+    justify-content: center;
+    -moz-column-gap: 17px;
+    column-gap: 17px;
+}
+.table__action {
+    box-sizing: content-box;
+    display: flex;
+    -moz-column-gap: 4px;
+    column-gap: 4px;
+    align-items: center;
+    padding: 8px 9px;
+    background-color: #007bff;
+    outline: 0;
+    border: 0;
+    border-radius: 35px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 1077px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.25);
+    background: #fffdfd;
+}
+.main-section__tittle {
+    font-size: 21px;
+}
+.main-section__nav-table {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+.main-section__search-box {
+    display: flex;
+    align-items: center;
+    width: 409px;
+    height: 41px;
+    border-radius: 36px;
+    background: #f0f0f0;
+}
+.main-section__search {
+    height: 100%;
+    flex-grow: 1;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    background-color: transparent;
+    padding-right: 10px;
+    font-weight: 400;
+    font-size: 12px;
+    color: #2a3042;
+}
+.main-section__search::-moz-placeholder {
+    font-weight: 400;
+    font-size: 12px;
+    color: #2a3042;
+}
+.main-section__search::placeholder {
+    font-weight: 400;
+    font-size: 12px;
+    color: #2a3042;
+}
+.main-section__img {
+    box-sizing: content-box;
+    height: 21px;
+    width: 21px;
+    padding: 11px;
+    background: url("../icons/Search.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+.main-section__pages-box {
+    height: 45px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    -moz-column-gap: 52px;
+    column-gap: 52px;
+    text-transform: none;
+    padding-inline: 51px;
+    background: transparent;
+}
+.main-section__pages-showbox {
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: #787878;
+}
+.main-section__pages-showbox::after {
+    content: "";
+    position: relative;
+    border: 4px solid transparent;
+    border-top: 7px solid #6e6893;
+    top: 11px;
+    left: 11px;
+}
+.main-section__number-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: #787878;
+}
+.main-section__arrow-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 65px;
+}
+
+.arrow {
+    border: solid #787878;
+    border-width: 0 3px 3px 0;
+    border-radius: 1px;
+    display: inline-block;
+    padding: 4px;
+    cursor: pointer;
+}
+.arrow--right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.arrow--left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+} /*# sourceMappingURL=style.css.map */
+
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.3);
+}
+
+
+.default-avatar {
+    width: 100%;
+    height: 100%;
+    background-color: #aaaaaa; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.default-avatar img {
+    stroke: white;
+    width: 60%;
+}
+
+.wrapper-user-login{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
